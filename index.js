@@ -13,9 +13,8 @@ const LoggerClass = require('./Logger');
 const Logger = new LoggerClass();
 
 // -> http-Endpoints
-var getRequests = ['/', '/login', '/register', '/console', '/logout', '/yourscripts'];
-var apiGetRequests = ['/WhatsMyIp', '/download'];
-var postRequests = ['/register', '/login'];
+var getRequests = ['/', '/test'];
+var postRequests = ['/test', '/test2'];
 
 // -> WebServer-setup
 app.use("/static", express.static('./static/'));
@@ -26,13 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // WebServer Listeners //
-app.get(apiGetRequests, (req, res) => {
-    var remoteUser_ip = req.socket.remoteAddress
-    console.log(`User sent request [${req.path}] from ip: ${remoteUser_ip}`);
-    Logger.log(`User sent request [${req.path}] from ip: ${remoteUser_ip}`);
-});
-
-
 app.get(getRequests, (req, res) => {
     var remoteUser_ip = req.socket.remoteAddress
     console.log(`User sent request [${req.path}] from ip: ${remoteUser_ip}`);
